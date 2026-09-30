@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f0df">
+
+  <title>Рысбек & Алсу — 12.07.2027</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==============================
+       BASE
+    ============================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Cormorant Garamond", serif;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(201, 181, 181, 0.15), transparent 35%),
+        radial-gradient(circle at 80% 50%, rgba(102, 112, 72, 0.10), transparent 35%),
+        #f5f0df;
+
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    body.locked {
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    :root {
+      --cream: #f5f0df;
+      --cream-light: #fbf8ee;
+      --green: #66704a;
+      --green-dark: #485032;
+      --pink: #d99aaa;
+      --pink-light: #efc8d1;
+      --text: #37372f;
+      --muted: #777264;
+      --white: #fffdf8;
+    }
+
+    /* ==============================
+       GENERAL SECTION
+    ============================== */
+
+    .section {
+      width: 100%;
+      padding: 80px 22px;
+      position: relative;
+    }
+
+    .container {
+      width: min(100%, 650px);
+      margin: 0 auto;
+    }
+
+    .script {
+      font-family: "Great Vibes", cursive;
+      color: var(--pink);
+      font-weight: 400;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(42px, 11vw, 68px);
+      font-weight: 400;
+      color: var(--green-dark);
+      margin-bottom: 30px;
+    }
+
+    .small-line {
+      width: 70px;
+      height: 1px;
+      background: var(--pink);
+      margin: 20px auto;
+    }
+
+    /* ==============================
+       OPENING SCREEN
+    ============================== */
+
+    #opening {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: 30px;
+
+      background:
+        linear-gradient(rgba(245, 240, 223, .90), rgba(245, 240, 223, .94)),
+        radial-gradient(circle at top left, #9da283 0%, transparent 40%),
+        radial-gradient(circle at bottom right, #66704a 0%, transparent 42%),
+        #f5f0df;
+
+      transition:
+        opacity 1s ease,
+        visibility 1s ease,
+        transform 1s ease;
+    }
+
+    #opening.opened {
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(1.05);
+      pointer-events: none;
+    }
+
+    .opening-inner {
+      text-align: center;
+      width: min(100%, 430px);
+    }
+
+    .opening-flower {
+      font-size: 50px;
+      color: var(--pink);
+      opacity: .8;
+      margin-bottom: 20px;
+    }
+
+    .opening-names {
+      font-family: "Great Vibes", cursive;
+      color: var(--pink);
+      font-size: clamp(55px, 15vw, 88px);
+      line-height: .95;
+    }
+
+    .opening-date {
+      margin-top: 20px;
+      font-family: "Montserrat", sans-serif;
+      font-size: 13px;
+      letter-spacing: 5px;
+      color: var(--green-dark);
+    }
+
+    /* Wax seal */
+
+    .seal-wrap {
+      margin: 55px auto 0;
+      width: 145px;
+      height: 145px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+      position: relative;
+      border: none;
+      background: transparent;
+    }
+
+    .seal {
+      width: 115px;
+      height: 115px;
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: #eee7cf;
+
+      background:
+        radial-gradient(circle at 35% 25%, #83905c, #59633b 55%, #41482d 100%);
+
+      border: 3px solid rgba(52, 61, 35, .5);
+
+      box-shadow:
+        0 10px 25px rgba(0, 0, 0, .25),
+        inset 0 0 0 5px rgba(255,255,255,.08),
+        inset 0 0 0 9px rgba(50,55,32,.18);
+
+      position: relative;
+      transition: .35s ease;
+    }
+
+    .seal::before {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      border-radius: 46% 54% 48% 52%;
+      border: 9px solid #59633b;
+      opacity: .9;
+      filter: drop-shadow(0 3px 3px rgba(0,0,0,.2));
+    }
+
+    .seal-wrap:hover .seal {
+      transform: scale(1.06) rotate(-3deg);
+    }
+
+    .seal span {
+      position: relative;
+      z-index: 2;
+      font-size: 18px;
+      font-style: italic;
+    }
+
+    .open-hint {
+      margin-top: 25px;
+      color: var(--muted);
+      font-size: 15px;
+      letter-spacing: 1px;
+    }
+
+    /* ==============================
+       HERO
+    ============================== */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+
+      padding: 70px 20px 90px;
+
+      text-align: center;
+
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,.2), transparent),
+        var(--cream);
+    }
+
+    .hero-date {
+      color: var(--pink);
+      letter-spacing: 4px;
+      font-family: "Montserrat", sans-serif;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .hero-names {
+      font-family: "Great Vibes", cursive;
+      color: var(--green-dark);
+      font-size: clamp(65px, 17vw, 105px);
+      font-weight: 400;
+      line-height: .9;
+    }
+
+    .wedding-day {
+      margin-top: 25px;
+      letter-spacing: 7px;
+      font-family: "Montserrat", sans-serif;
+      font-size: 12px;
+      color: var(--pink);
+      text-transform: uppercase;
+    }
+
+    /* Couple image */
+
+    .photo-frame {
+      width: min(88%, 400px);
+      margin: 50px auto 0;
+      padding: 9px;
+
+      border: 1px solid rgba(102, 112, 74, .4);
+      border-radius: 180px 180px 25px 25px;
+
+      background: rgba(255,255,255,.35);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 170px 170px 18px 18px;
+    }
+
+    /* ==============================
+       INVITATION
+    ============================== */
+
+    .invitation-section {
+      background:
+        radial-gradient(circle at top right, rgba(102,112,74,.12), transparent 30%),
+        var(--cream-light);
+    }
+
+    .invitation-card {
+      padding: 50px 28px;
+
+      text-align: center;
+
+      background: rgba(255,255,255,.55);
+
+      border: 1px solid rgba(102,112,74,.22);
+      border-radius: 35px 35px 90px 35px;
+
+      box-shadow: 0 20px 60px rgba(64, 65, 47, .08);
+    }
+
+    .invitation-card h2 {
+      font-family: "Great Vibes", cursive;
+      color: var(--pink);
+      font-size: 48px;
+      font-weight: 400;
+      margin-bottom: 28px;
+    }
+
+    .invitation-card p {
+      font-size: 20px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .invitation-card strong {
+      color: var(--green-dark);
+    }
+
+    /* ==============================
+       POEM
+    ============================== */
+
+    .poem-section {
+      text-align: center;
+      background: var(--green);
+      color: #fff;
+    }
+
+    .poem-flower {
+      font-size: 35px;
+      margin-bottom: 25px;
+    }
+
+    .poem {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: clamp(22px, 6vw, 29px);
+      line-height: 1.8;
+    }
+
+    /* ==============================
+       EVENT INFO
+    ============================== */
+
+    .event-section {
+      text-align: center;
+    }
+
+    .event-date-big {
+      font-family: "Great Vibes", cursive;
+      color: var(--pink);
+      font-size: 56px;
+    }
+
+    .event-time {
+      margin-top: 15px;
+      font-size: 50px;
+      color: var(--green-dark);
+    }
+
+    .restaurant {
+      margin-top: 35px;
+      font-size: 30px;
+      font-weight: 600;
+    }
+
+    .address {
+      margin: 12px auto 30px;
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .map-button {
+      display: inline-block;
+
+      padding: 15px 30px;
+
+      background: var(--green);
+      color: #fff;
+
+      border-radius: 50px;
+
+      text-decoration: none;
+
+      font-family: "Montserrat", sans-serif;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+
+      transition: .3s;
+    }
+
+    .map-button:hover {
+      transform: translateY(-3px);
+      background: var(--green-dark);
+    }
+
+    /* ==============================
+       HOSTS
+    ============================== */
+
+    .hosts-section {
+      background: var(--cream-light);
+      text-align: center;
+    }
+
+    .hosts-label {
+      font-family: "Montserrat", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hosts-names {
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(55px, 15vw, 80px);
+      color: var(--pink);
+      margin-top: 15px;
+    }
+
+    /* ==============================
+       RSVP
+    ============================== */
+
+    .rsvp-section {
+      background:
+        radial-gradient(circle at bottom left, rgba(217,154,170,.18), transparent 35%),
+        var(--cream);
+    }
+
+    .rsvp-card {
+      background: rgba(255,255,255,.65);
+
+      padding: 45px 25px;
+
+      border-radius: 35px;
+
+      box-shadow: 0 20px 60px rgba(65,65,45,.09);
+    }
+
+    .rsvp-intro {
+      text-align: center;
+      font-size: 19px;
+      line-height: 1.6;
+      margin: -10px 0 35px;
+      color: var(--muted);
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+
+      font-size: 18px;
+      color: var(--green-dark);
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 15px 17px;
+
+      background: #fffdf8;
+
+      border: 1px solid rgba(102,112,74,.35);
+      border-radius: 14px;
+
+      outline: none;
+
+      font-size: 17px;
+      color: var(--text);
+
+      transition: .25s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--pink);
+      box-shadow: 0 0 0 3px rgba(217,154,170,.12);
+    }
+
+    .radio-group {
+      display: grid;
+      gap: 12px;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      padding: 14px;
+
+      border: 1px solid rgba(102,112,74,.25);
+      border-radius: 14px;
+
+      background: #fffdf8;
+
+      cursor: pointer;
+    }
+
+    .radio-option input {
+      width: auto;
+      accent-color: var(--green);
+    }
+
+    .submit-btn {
+      width: 100%;
+
+      margin-top: 10px;
+      padding: 17px;
+
+      border: none;
+      border-radius: 50px;
+
+      background: var(--green);
+      color: white;
+
+      cursor: pointer;
+
+      font-family: "Montserrat", sans-serif;
+      letter-spacing: 1px;
+      font-size: 13px;
+
+      transition: .3s;
+    }
+
+    .submit-btn:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+    }
+
+    .submit-btn:disabled {
+      opacity: .6;
+      cursor: wait;
+    }
+
+    #formMessage {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+
+      text-align: center;
+
+      border-radius: 12px;
+      background: rgba(102,112,74,.1);
+      color: var(--green-dark);
+    }
+
+    /* ==============================
+       COUNTDOWN
+    ============================== */
+
+    .countdown-section {
+      text-align: center;
+      color: white;
+
+      background:
+        linear-gradient(rgba(72,80,50,.94), rgba(72,80,50,.94)),
+        var(--green-dark);
+    }
+
+    .countdown-section .section-title {
+      color: var(--pink-light);
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+
+      margin-top: 35px;
+    }
+
+    .count-item {
+      padding: 20px 5px;
+
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 15px;
+    }
+
+    .count-number {
+      display: block;
+      font-size: clamp(28px, 8vw, 45px);
+      line-height: 1;
+    }
+
+    .count-label {
+      display: block;
+
+      margin-top: 8px;
+
+      font-family: "Montserrat", sans-serif;
+      font-size: 8px;
+      letter-spacing: 1px;
+      opacity: .75;
+      text-transform: uppercase;
+    }
+
+    .final-date {
+      margin-top: 35px;
+      color: var(--pink-light);
+      letter-spacing: 4px;
+    }
+
+    /* ==============================
+       MUSIC
+    ============================== */
+
+    #musicButton {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 1000;
+
+      width: 52px;
+      height: 52px;
+
+      border: none;
+      border-radius: 50%;
+
+      background: var(--green);
+      color: white;
+
+      box-shadow: 0 7px 20px rgba(0,0,0,.2);
+
+      cursor: pointer;
+
+      font-size: 20px;
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #musicButton.playing {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(102,112,74,.5);
+      }
+
+      70% {
+        box-shadow: 0 0 0 15px rgba(102,112,74,0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(102,112,74,0);
+      }
+    }
+
+    /* ==============================
+       SCROLL ANIMATION
+    ============================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition:
+        opacity .9s ease,
+        transform .9s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==============================
+       RESPONSIVE
+    ============================== */
+
+    @media (max-width: 500px) {
+
+      .section {
+        padding: 65px 18px;
+      }
+
+      .photo-frame img {
+        height: 430px;
+      }
+
+      .invitation-card {
+        padding: 42px 20px;
+      }
+
+      .invitation-card p {
+        font-size: 19px;
+      }
+
+      .count-item {
+        padding: 17px 2px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body class="locked">
+
+  <!-- ========================================
+       OPENING
+  ========================================= -->
+
+  <div id="opening">
+
+    <div class="opening-inner">
+
+      <div class="opening-flower">❀</div>
+
+      <h1 class="opening-names">
+        Рысбек <br>&<br> Алсу
+      </h1>
+
+      <div class="opening-date">
+        12 · 07 · 2027
+      </div>
+
+      <button
+        class="seal-wrap"
+        id="openInvitation"
+        aria-label="Чакырууну ачуу"
+      >
+        <div class="seal">
+          <span>Ачуу</span>
+        </div>
+      </button>
+
+      <div class="open-hint">
+        Чакырууну ачуу үчүн мөөрдү басыңыз
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================
+       MUSIC
+  ========================================= -->
+
+  <audio
+    id="backgroundMusic"
+    loop
+    preload="auto"
+  >
+    <source
+      src="wedding-music.mp3"
+      type="audio/mpeg"
+    >
+  </audio>
+
+  <button
+    id="musicButton"
+    aria-label="Музыканы башкаруу"
+  >
+    ♫
+  </button>
+
+
+  <!-- ========================================
+       HERO
+  ========================================= -->
+
+  <main>
+
+    <section class="hero">
+
+      <div class="container">
+
+        <div class="hero-date">
+          12 · 07 · 2027
+        </div>
+
+        <h1 class="hero-names">
+          Рысбек & Алсу
+        </h1>
+
+        <div class="wedding-day">
+          Wedding Day
+        </div>
+
+        <div class="photo-frame">
+          <img
+            src="couple.jpg"
+            alt="Рысбек жана Алсу"
+          >
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================
+         INVITATION
+    ========================================= -->
+
+    <section class="section invitation-section">
+
+      <div class="container reveal">
+
+        <div class="invitation-card">
+
+          <h2>Кадырлуу коноктор!</h2>
+
+          <p>
+            <strong>
+              Кадырлуу туугандар, дос-жарандар жана жакындарыбыз!
+            </strong>
+          </p>
+
+          <p>
+            Жараткандын буйругу менен үйүбүзгө бакыт конуп,
+            кубанычтуу күн келди.
+            Уулубуз <strong>Рысбек</strong> менен келинибиз
+            <strong>Алсу</strong> ак никесин кыйып,
+            жаңы үй-бүлө курушат.
+          </p>
+
+          <p>
+            Ушул ыйык күндө сиздерди кадырлуу меймандарыбыз
+            катары тойго чакырабыз.
+            Кубанычыбызды бирге бөлүшүп,
+            жаштарга ак батаңыздарды берип коюңуздар!
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================
+         POEM
+    ========================================= -->
+
+    <section class="section poem-section">
+
+      <div class="container reveal">
+
+        <div class="poem-flower">
+          ❀
+        </div>
+
+        <div class="poem">
+          Ак никенин күбөсү болуп,<br>
+          Ак батаңызды бериңиз деп,<br>
+          Сиздерди тойго чакырабыз,<br>
+          Кубанычты бөлөлү деп!
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================
+         DATE / PLACE
+    ========================================= -->
+
+    <section class="section event-section">
+
+      <div class="container reveal">
+
+        <h2 class="section-title">
+          Убактысы жана дареги
+        </h2>
+
+        <div class="event-date-big">
+          12-июль
+        </div>
+
+        <div style="font-size:20px;">
+          2027-жыл
+        </div>
+
+        <div class="small-line"></div>
+
+        <div class="event-time">
+          14:00
+        </div>
+
+        <div class="restaurant">
+          «АТА» рестораны
+        </div>
+
+        <div class="address">
+          Мадиева, 22Б<br>
+          Бишкек, Кыргызстан
+        </div>
+
+        <!-- Google Maps search -->
+        <a
+          class="map-button"
+          href="https://www.google.com/maps/search/?api=1&query=%D0%9C%D0%B0%D0%B4%D0%B8%D0%B5%D0%B2%D0%B0%2022%D0%91%20%D0%91%D0%B8%D1%88%D0%BA%D0%B5%D0%BA"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Картадан көрүү
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================
+         HOSTS
+    ========================================= -->
+
+    <section class="section hosts-section">
+
+      <div class="container reveal">
+
+        <div class="hosts-label">
+          Той ээлери
+        </div>
+
+        <div class="hosts-names">
+          Калыс & Нуриза
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================
+         RSVP
+    ========================================= -->
+
+    <section class="section rsvp-section">
+
+      <div class="container reveal">
+
+        <div class="rsvp-card">
+
+          <h2 class="section-title">
+            Тойго катышасызбы?
+          </h2>
+
+          <p class="rsvp-intro">
+            Сиздин жообуңуз биз үчүн маанилүү.
+            Төмөнкү форманы толтуруп коюңуз.
+          </p>
+
+
+          <form id="rsvpForm">
+
+            <div class="form-group">
+
+              <label for="guestName">
+                Аты-жөнүңүз
+              </label>
+
+              <input
+                type="text"
+                id="guestName"
+                name="name"
+                placeholder="Мисалы: Айбек Токтосунов"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                Тойго катышасызбы?
+              </label>
+
+              <div class="radio-group">
+
+                <label class="radio-option">
+
+                  <input
+                    type="radio"
+                    name="attendance"
+                    value="Ооба, сөзсүз келем"
+                    required
+                  >
+
+                  <span>
+                    Ооба, сөзсүз келем
+                  </span>
+
+                </label>
+
+
+                <label class="radio-option">
+
+                  <input
+                    type="radio"
+                    name="attendance"
+                    value="Тилекке каршы, келе албайм"
+                    required
+                  >
+
+                  <span>
+                    Тилекке каршы, келе албайм
+                  </span>
+
+                </label>
+
+              </div>
+
+            </div>
+
+
+            <div
+              class="form-group"
+              id="guestCountGroup"
+            >
+
+              <label for="guestCount">
+                Канча адам болуп келесиз?
+              </label>
+
+              <select
+                id="guestCount"
+                name="guestCount"
+              >
+
+                <option value="1">
+                  1 адам
+                </option>
+
+                <option value="2">
+                  2 адам
+                </option>
+
+                <option value="3">
+                  3 адам
+                </option>
+
+                <option value="4">
+                  4 адам
+                </option>
+
+                <option value="5">
+                  5 адам
+                </option>
+
+                <option value="6+">
+                  6 же андан көп
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <button
+              type="submit"
+              class="submit-btn"
+              id="submitButton"
+            >
+              ЖООПТУ ЖӨНӨТҮҮ
+            </button>
+
+
+            <div id="formMessage"></div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================
+         COUNTDOWN
+    ========================================= -->
+
+    <section class="section countdown-section">
+
+      <div class="container reveal">
+
+        <h2 class="section-title">
+          Жолугушканча!
+        </h2>
+
+        <p>
+          Биздин өзгөчө күнгө чейин:
+        </p>
+
+
+        <div class="countdown">
+
+          <div class="count-item">
+
+            <span
+              class="count-number"
+              id="days"
+            >
+              00
+            </span>
+
+            <span class="count-label">
+              күн
+            </span>
+
+          </div>
+
+
+          <div class="count-item">
+
+            <span
+              class="count-number"
+              id="hours"
+            >
+              00
+            </span>
+
+            <span class="count-label">
+              саат
+            </span>
+
+          </div>
+
+
+          <div class="count-item">
+
+            <span
+              class="count-number"
+              id="minutes"
+            >
+              00
+            </span>
+
+            <span class="count-label">
+              мүнөт
+            </span>
+
+          </div>
+
+
+          <div class="count-item">
+
+            <span
+              class="count-number"
+              id="seconds"
+            >
+              00
+            </span>
+
+            <span class="count-label">
+              секунд
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="final-date">
+          12 · 07 · 2027
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script>
+
+    /* ========================================
+       SETTINGS
+    ========================================= */
+
+    /*
+      Google Apps Script URL'иңди кийин ушул жерге коёсуң.
+
+      Мисалы:
+      const GOOGLE_SCRIPT_URL =
+        "https://script.google.com/macros/s/XXXXXXXX/exec";
+    */
+
+    const GOOGLE_SCRIPT_URL = "";
+
+
+    /* ========================================
+       OPEN INVITATION + MUSIC
+    ========================================= */
+
+    const opening =
+      document.getElementById("opening");
+
+    const openInvitation =
+      document.getElementById("openInvitation");
+
+    const music =
+      document.getElementById("backgroundMusic");
+
+    const musicButton =
+      document.getElementById("musicButton");
+
+
+    openInvitation.addEventListener("click", async () => {
+
+      opening.classList.add("opened");
+
+      document.body.classList.remove("locked");
+
+      musicButton.style.display = "flex";
+
+      try {
+
+        await music.play();
+
+        musicButton.classList.add("playing");
+
+        musicButton.textContent = "♫";
+
+      } catch (error) {
+
+        console.log(
+          "Музыка автоматтык түрдө башталган жок:",
+          error
+        );
+
+      }
+
+    });
+
+
+    musicButton.addEventListener("click", async () => {
+
+      if (music.paused) {
+
+        try {
+
+          await music.play();
+
+          musicButton.classList.add("playing");
+
+          musicButton.textContent = "♫";
+
+        } catch (error) {
+
+          console.log(error);
+
+        }
+
+      } else {
+
+        music.pause();
+
+        musicButton.classList.remove("playing");
+
+        musicButton.textContent = "♪";
+
+      }
+
+    });
+
+
+    /* ========================================
+       RSVP ATTENDANCE
+    ========================================= */
+
+    const attendanceRadios =
+      document.querySelectorAll(
+        'input[name="attendance"]'
+      );
+
+    const guestCountGroup =
+      document.getElementById("guestCountGroup");
+
+    const guestCount =
+      document.getElementById("guestCount");
+
+
+    attendanceRadios.forEach((radio) => {
+
+      radio.addEventListener("change", () => {
+
+        if (
+          radio.value ===
+          "Тилекке каршы, келе албайм"
+        ) {
+
+          guestCountGroup.style.display = "none";
+
+          guestCount.value = "0";
+
+        } else {
+
+          guestCountGroup.style.display = "block";
+
+          if (guestCount.value === "0") {
+            guestCount.value = "1";
+          }
+
+        }
+
+      });
+
+    });
+
+
+    /* ========================================
+       RSVP → GOOGLE SHEETS
+    ========================================= */
+
+    const rsvpForm =
+      document.getElementById("rsvpForm");
+
+    const submitButton =
+      document.getElementById("submitButton");
+
+    const formMessage =
+      document.getElementById("formMessage");
+
+
+    rsvpForm.addEventListener(
+      "submit",
+      async (event) => {
+
+        event.preventDefault();
+
+
+        const name =
+          document
+            .getElementById("guestName")
+            .value
+            .trim();
+
+
+        const attendanceElement =
+          document.querySelector(
+            'input[name="attendance"]:checked'
+          );
+
+
+        if (!name || !attendanceElement) {
+
+          showMessage(
+            "Сураныч, бардык маалыматтарды толтуруңуз."
+          );
+
+          return;
+
+        }
+
+
+        const attendance =
+          attendanceElement.value;
+
+
+        const count =
+          attendance ===
+          "Тилекке каршы, келе албайм"
+            ? "0"
+            : guestCount.value;
+
+
+        /*
+          Эгер Google Script URL азырынча
+          коюла элек болсо, форма тест режиминде
+          иштейт.
+        */
+
+        if (!GOOGLE_SCRIPT_URL) {
+
+          showMessage(
+            "Рахмат! Форма иштеп жатат. Google Sheets URL кошулгандан кийин жооптор таблицага түшөт."
+          );
+
+          console.log({
+            name,
+            attendance,
+            guestCount: count
+          });
+
+          return;
+
+        }
+
+
+        submitButton.disabled = true;
+
+        submitButton.textContent =
+          "ЖӨНӨТҮЛҮҮДӨ...";
+
+
+        const formData =
+          new URLSearchParams();
+
+        formData.append(
+          "name",
+          name
+        );
+
+        formData.append(
+          "attendance",
+          attendance
+        );
+
+        formData.append(
+          "guestCount",
+          count
+        );
+
+
+        try {
+
+          await fetch(
+            GOOGLE_SCRIPT_URL,
+            {
+              method: "POST",
+              mode: "no-cors",
+              body: formData
+            }
+          );
+
+
+          showMessage(
+            "Рахмат! Жообуңуз кабыл алынды 🤍"
+          );
+
+
+          rsvpForm.reset();
+
+          guestCountGroup.style.display =
+            "block";
+
+
+        } catch (error) {
+
+          console.error(error);
+
+          showMessage(
+            "Жооп жөнөтүүдө ката кетти. Кайра аракет кылып көрүңүз."
+          );
+
+        } finally {
+
+          submitButton.disabled = false;
+
+          submitButton.textContent =
+            "ЖООПТУ ЖӨНӨТҮҮ";
+
+        }
+
+      }
+    );
+
+
+    function showMessage(text) {
+
+      formMessage.textContent = text;
+
+      formMessage.style.display = "block";
+
+    }
+
+
+    /* ========================================
+       COUNTDOWN
+       Bishkek = UTC+6
+    ========================================= */
+
+    const weddingDate =
+      new Date(
+        "2027-07-12T14:00:00+06:00"
+      );
+
+
+    function updateCountdown() {
+
+      const now =
+        new Date();
+
+      const difference =
+        weddingDate.getTime() -
+        now.getTime();
+
+
+      if (difference <= 0) {
+
+        document.getElementById("days")
+          .textContent = "00";
+
+        document.getElementById("hours")
+          .textContent = "00";
+
+        document.getElementById("minutes")
+          .textContent = "00";
+
+        document.getElementById("seconds")
+          .textContent = "00";
+
+        return;
+
+      }
+
+
+      const days =
+        Math.floor(
+          difference /
+          (1000 * 60 * 60 * 24)
+        );
+
+
+      const hours =
+        Math.floor(
+          (
+            difference %
+            (1000 * 60 * 60 * 24)
+          ) /
+          (1000 * 60 * 60)
+        );
+
+
+      const minutes =
+        Math.floor(
+          (
+            difference %
+            (1000 * 60 * 60)
+          ) /
+          (1000 * 60)
+        );
+
+
+      const seconds =
+        Math.floor(
+          (
+            difference %
+            (1000 * 60)
+          ) /
+          1000
+        );
+
+
+      document.getElementById("days")
+        .textContent =
+        String(days).padStart(2, "0");
+
+
+      document.getElementById("hours")
+        .textContent =
+        String(hours).padStart(2, "0");
+
+
+      document.getElementById("minutes")
+        .textContent =
+        String(minutes).padStart(2, "0");
+
+
+      document.getElementById("seconds")
+        .textContent =
+        String(seconds).padStart(2, "0");
+
+    }
+
+
+    updateCountdown();
+
+    setInterval(
+      updateCountdown,
+      1000
+    );
+
+
+    /* ========================================
+       SCROLL REVEAL
+    ========================================= */
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+
+          entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+              entry.target
+                .classList
+                .add("visible");
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.15
+        }
+      );
+
+
+    document
+      .querySelectorAll(".reveal")
+      .forEach((element) => {
+
+        observer.observe(element);
+
+      });
+
+  </script>
+
+</body>
+</html>
